@@ -11,7 +11,9 @@ for (var i = 0; i < 100; i++) {
 //   {time: 1500, message: {amp:0.8,freq:100}}], 2000);
 var a = new ShapeSound(events, 1000);
 
-
+window.onload = function() {
+    var a = new Main();
+};
 function onMouseDown() {
-  a.play();
+  //a.play();
 }
