@@ -11,6 +11,7 @@ for (var i = 0; i < 100; i++) {
 //   {time: 1500, message: {amp:0.8,freq:100}}], 2000);
 var a = new ShapeSound(events, 1000);
 
+var audioCtx = new AudioContext();
 window.onload = function() {
     var a = new Main();
 };
