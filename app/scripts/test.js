@@ -15,6 +15,3 @@ var audioCtx = new AudioContext();
 window.onload = function() {
     var a = new Main();
 };
-function onMouseDown() {
-  //a.play();
-}

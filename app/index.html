@@ -25,7 +25,7 @@
     <div class="canvas-container">
     <!--<div ng-view=""></div>-->
       <div class="canvas">
-        <canvas resize="true"  id="myCanvas" resize="true" onmousedown="onMouseDown()"></canvas>
+        <canvas resize="true"  id="myCanvas" resize="true" ></canvas>
       </div>
     </div>
 
@@ -47,8 +47,15 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
 
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <!--<script src="scripts/controllers/main.js"></script>-->
+        <!--<script src="scripts/controllers/about.js"></script>-->
+        <script src="scripts/paper/paper-full.js"></script>
+        <script src="scripts/soundEngine/TimelineEvent.js"></script>
+        <script src="scripts/soundEngine/LiveSound.js"></script>
+        <script src="scripts/soundEngine/ShapeSound.js"></script>
+        <script src="scripts/view/CanvasTimelineEvent.js"></script>
+        <script src="scripts/view/Main.js"></script>
+        <script src="scripts/test.js"></script>
         <!-- endbuild -->
 </body>
 </html>
