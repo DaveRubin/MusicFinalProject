@@ -11,8 +11,9 @@ class ShapeSound {
    * @param totalDuration - the total duration of the sequence
    */
   constructor(timeline = [], totalDuration = 0) {
-    this.startingAmp = 0.4;
     var startingCutoff = 1000;
+
+    this.startingAmp = 0.4;
     this.timeline = timeline;
     this.totalDuration = totalDuration;
     this.gainNode = audioCtx.createGain();
@@ -47,7 +48,7 @@ class ShapeSound {
     //then schedule control
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
-      var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.time);
+      var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);
       this.intervals.push(p);
     }
 
@@ -75,7 +76,7 @@ class ShapeSound {
 
   /**
    * Gets the timeline event and alters sin according to it
-   * @param event - TimelineEvent object
+   * @param event - CanvasTimelineEvent object
    */
   handleTimelineEvent(event) {
 
@@ -85,9 +86,10 @@ class ShapeSound {
       this.oscillator2.start();
     }
 
-    this.oscillator1.frequency.value = event.freq;
-    this.oscillator2.frequency.value = event.freq;
-    this.gainNode.gain.value = event.amp * this.startingAmp;
-    this.filter.frequency.value=   event.cutoff;
+    //map
+    this.oscillator1.frequency.value = event.mappedFrequency();
+    this.oscillator2.frequency.value = event.mappedFrequency();
+    this.gainNode.gain.value = event.mappedAmp();
+    this.filter.frequency.value=   event.mappedFilter();
   };
 }

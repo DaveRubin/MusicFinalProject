@@ -16489,18 +16489,6 @@ return paper;
 /**
  * Created by david on 24/05/2017.
  */
-class TimelineEvent {
-  constructor(time = 0, amp = 0, freq = 400, cutoff = 800) {
-    this.time = time;
-    this.amp = amp;
-    this.freq = freq;
-    this.cutoff = cutoff;
-  }
-}
-
-/**
- * Created by david on 24/05/2017.
- */
 /**
  * Created by david on 23/05/2017.
  * playing sounds according to player
@@ -16520,7 +16508,7 @@ class LiveSound {
     this.filter = audioCtx.createBiquadFilter();
     this.filter.type = "lowshelf";
     this.filter.frequency.value = startingCutoff;
-    this.filter.gain.value = 20;
+    this.filter.gain.value = 30;
     this.gainNode.connect(this.filter);
     this.filter.connect(audioCtx.destination);
     this.playing = false;
@@ -16560,17 +16548,11 @@ class LiveSound {
     }
   }
 
-  updateFrequency(f = 0) {
-    this.oscillator1.frequency.value = f;
-    this.oscillator2.frequency.value = f;
-  };
-
-  updateFilter(f = 0) {
-    this.filter.frequency.value = f;
-  }
-
-  updateVolume(v = 0.5) {
-    this.gainNode.gain.value = v * this.startingAmp;
+  updateSound(event) {
+    this.oscillator1.frequency.value = event.mappedFrequency();
+    this.oscillator2.frequency.value = event.mappedFrequency();
+    this.gainNode.gain.value = event.mappedAmp();
+    this.filter.frequency.value=   event.mappedFilter();
   }
 }
 
@@ -16587,8 +16569,9 @@ class ShapeSound {
    * @param totalDuration - the total duration of the sequence
    */
   constructor(timeline = [], totalDuration = 0) {
-    this.startingAmp = 0.4;
     var startingCutoff = 1000;
+
+    this.startingAmp = 0.4;
     this.timeline = timeline;
     this.totalDuration = totalDuration;
     this.gainNode = audioCtx.createGain();
@@ -16623,7 +16606,7 @@ class ShapeSound {
     //then schedule control
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
-      var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.time);
+      var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);
       this.intervals.push(p);
     }
 
@@ -16651,7 +16634,7 @@ class ShapeSound {
 
   /**
    * Gets the timeline event and alters sin according to it
-   * @param event - TimelineEvent object
+   * @param event - CanvasTimelineEvent object
    */
   handleTimelineEvent(event) {
 
@@ -16661,10 +16644,11 @@ class ShapeSound {
       this.oscillator2.start();
     }
 
-    this.oscillator1.frequency.value = event.freq;
-    this.oscillator2.frequency.value = event.freq;
-    this.gainNode.gain.value = event.amp * this.startingAmp;
-    this.filter.frequency.value=   event.cutoff;
+    //map
+    this.oscillator1.frequency.value = event.mappedFrequency();
+    this.oscillator2.frequency.value = event.mappedFrequency();
+    this.gainNode.gain.value = event.mappedAmp();
+    this.filter.frequency.value=   event.mappedFilter();
   };
 }
 
@@ -16672,10 +16656,79 @@ class ShapeSound {
  * Created by david on 24/05/2017.
  */
 class CanvasTimelineEvent {
-  constructor(duration,position,speed) {
+  constructor(duration, position, speed) {
     this.duration = duration;
     this.position = position;
     this.speed = speed;
+    this.notes = [440,493.9,523.3,587.3,659.3,698.5,784.0,880.0,987.8,1047];
+  }
+
+  mappedFrequency() {
+    var tone = 300;
+    var ratio = this.position.x/view.size.width;
+
+    if (ratio< 0.1)       tone = this.notes[0];
+    else if (ratio< 0.2)  tone = this.notes[1];
+    else if (ratio< 0.3)  tone = this.notes[2];
+    else if (ratio< 0.4)  tone = this.notes[3];
+    else if (ratio< 0.5)  tone = this.notes[4];
+    else if (ratio< 0.6)  tone = this.notes[5];
+    else if (ratio< 0.7)  tone = this.notes[6];
+    else if (ratio< 0.8)  tone = this.notes[7];
+    else if (ratio< 0.9)  tone = this.notes[8];
+    else if (ratio< 1)    tone = this.notes[9];
+    return tone;
+  }
+
+  mappedAmp() {
+    return 0.5;
+  }
+
+  mappedFilter() {
+    return 2000- (this.position.y/view.size.height)*2000;
+  }
+}
+
+class PathTracer {
+
+  constructor(timelineEvents,totalduration) {
+    this.intervals = [];
+    this.timeline = timelineEvents;
+    this.totalduration = totalduration;
+    console.log("Path tracer created");
+
+    this.circle = new Path.Circle({
+      center: new Point(50, 50),
+      radius: 10,
+      fillColor: 'white',
+      strokeColor: 'black'
+    });
+
+    this.sound = new ShapeSound(this.timeline,this.totalduration);
+
+
+    this.repeatMotion();
+
+
+    // var path = new Shape.Circle(new Point(100,100), 5 );
+    // path.data.vector = new Point({
+    //   angle: Math.random() * 360,
+    //   length : scale * Math.random() / 5
+    // });
+  }
+
+  handleTimelineEvent(event) {
+      this.circle.position = event.position;
+  };
+
+  repeatMotion() {
+    this.sound.play();
+    for (var i = 0; i < this.timeline.length; i++) {
+      var obj = this.timeline[i];
+      var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);
+      this.intervals.push(p);
+    }
+    setTimeout(this.repeatMotion.bind(this), this.totalduration);
   }
 }
 
@@ -16683,6 +16736,7 @@ class CanvasTimelineEvent {
  * Created by david on 24/05/2017.
  * The main class, app root
  */
+var normalizePoint;
 class Main {
   constructor() {
     //initialise paper
@@ -16696,6 +16750,10 @@ class Main {
     this.timelineEvents = [];
     this.killList = [];
     this.sound = new LiveSound();
+    this.grid = [];
+    normalizePoint = new Point(1/view.size.width,1/view.size.height);
+    this.gridOn = false;
+    this.gridAlpha = 0;
 
     //set events
     view.onMouseDown = (e)=>this.startDraw(e);
@@ -16704,6 +16762,22 @@ class Main {
     view.onFrame = (e)=>this.onFrame(e);
 
     //TODO - Add bar counter to set some kind of frame for all of this
+    this.drawGrid();
+  }
+
+  drawGrid() {
+    //create 10 sections
+    var p;
+    var widthSection = view.size.width/10;
+    for (var i = 1; i < 10; i++) {
+      p = new Path({
+        segments: [new Point(widthSection*i,0),new Point(widthSection*i,view.size.height)],
+        strokeColor: '#222222',
+      });
+      p.strokeColor.alpha = 0;
+      this.grid.push(p);
+
+    }
   }
 
   /**
@@ -16725,6 +16799,22 @@ class Main {
         }
       }
     }
+
+
+    if (this.gridOn && this.gridAlpha < 1) {
+      this.gridAlpha += 0.1;
+      for (var i = 0; i < this.grid.length; i++) {
+        var line = this.grid[i];
+        line.strokeColor.alpha = this.gridAlpha;
+      }
+    }
+    else if (!this.gridOn && this.gridAlpha > 0) {
+      this.gridAlpha -= 0.1;
+      for (var i = 0; i < this.grid.length; i++) {
+        var line = this.grid[i];
+        line.strokeColor.alpha = this.gridAlpha;
+      }
+    }
   }
 
   /**
@@ -16734,7 +16824,7 @@ class Main {
   startDraw(event) {
     console.log('Start draw ');
     if (this.isDrawing) return;
-
+    this.gridOn = true;
     this.sound.play();
     this.timelineEvents = [];
     this.startTime = Date.now();
@@ -16746,6 +16836,9 @@ class Main {
       // Select the path, so we can see its segment points:
       // fullySelected: true
     });
+    var event = new CanvasTimelineEvent(0, event.point, 0);
+    this.sound.updateSound(event);
+    this.timelineEvents.push(event);
   }
 
   /**
@@ -16758,8 +16851,12 @@ class Main {
     this.sound.stop();
     console.log("Stop Draw");
     this.isDrawing = false;
-    this.path.simplify(10);
+    var totalDuration = Date.now() - this.startTime;
+    this.gridOn = false;
     this.killList.push(this.path);
+    if (totalDuration< 500) return;
+    var pt = new PathTracer(this.timelineEvents,totalDuration);
+    this.path.simplify(10);
   }
 
   /**
@@ -16767,32 +16864,30 @@ class Main {
    * @param event
    */
   draw(event) {
+
+
     if (this.isDrawing) {
       var p = event.point;
       var timePassed = Date.now() - this.startTime;
       var speed = p.subtract(this.lastPoint);
       this.path.add(p);
-      this.sound.updateFrequency(p.x + 400);
+      var event = new CanvasTimelineEvent(timePassed, p, speed);
+      this.sound.updateSound(event);
+      // this.sound.updateFrequency(p.x + 400);
       // this.sound.updateVolume(p.y/1400);
-      this.sound.updateFilter(Math.min(Math.abs(speed.x) * 400, 2050));
-      this.timelineEvents.push(new CanvasTimelineEvent(timePassed, p, speed));
+      // this.sound.updateFilter(Math.min(Math.abs(speed.x) * 400, 2050));
+      this.timelineEvents.push(event);
       this.lastPoint = p;
     }
   }
 }
 
 
-var events = [];
-for (var i = 0; i < 100; i++) {
-  var te = new TimelineEvent(i*10,0.8,500+i*5);
-  events.push(te);
-}
 
 // var a = new ShapeSound([
 //   {time: 500, message: {amp:0.2,freq:700}},
 //   {time: 1000, message: {amp:1,freq:800}},
 //   {time: 1500, message: {amp:0.8,freq:100}}], 2000);
-var a = new ShapeSound(events, 1000);
 
 var audioCtx = new AudioContext();
 window.onload = function() {
