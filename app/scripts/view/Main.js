@@ -121,7 +121,7 @@ class Main {
     this.gridOn = false;
     this.killList.push(this.path);
     if (totalDuration< 500) return;
-    var pt = new PathTracer(this`.timelineEvents,totalDuration);
+    var pt = new PathTracer(this.timelineEvents,totalDuration);
     this.path.simplify(10);
   }
 
