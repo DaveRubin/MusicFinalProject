@@ -2,6 +2,7 @@
  * Created by david on 24/05/2017.
  * The main class, app root
  */
+var normalizePoint;
 class Main {
   constructor() {
     //initialise paper
@@ -15,6 +16,7 @@ class Main {
     this.timelineEvents = [];
     this.killList = [];
     this.sound = new LiveSound();
+    normalizePoint = new Point(1/view.size.width,1/view.size.height);
 
     //set events
     view.onMouseDown = (e)=>this.startDraw(e);
@@ -65,6 +67,7 @@ class Main {
       // Select the path, so we can see its segment points:
       // fullySelected: true
     });
+    this.timelineEvents.push(new CanvasTimelineEvent(0, event.point, 0));
   }
 
   /**
@@ -77,6 +80,7 @@ class Main {
     this.sound.stop();
     console.log("Stop Draw");
     this.isDrawing = false;
+    var pt = new PathTracer(this.timelineEvents,Date.now() - this.startTime);
     this.path.simplify(10);
     this.killList.push(this.path);
   }
