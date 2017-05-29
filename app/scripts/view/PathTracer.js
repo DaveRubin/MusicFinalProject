@@ -31,6 +31,7 @@ class PathTracer {
   };
 
   repeatMotion() {
+    this.sound.play();
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
       var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);

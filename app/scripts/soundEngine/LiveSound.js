@@ -59,17 +59,11 @@ class LiveSound {
       this.oscillator2.stop();
     }
   }
-
-  updateFrequency(f = 0) {
-    this.oscillator1.frequency.value = f;
-    this.oscillator2.frequency.value = f;
-  };
-
-  updateFilter(f = 0) {
-    this.filter.frequency.value = f;
-  }
-
-  updateVolume(v = 0.5) {
-    this.gainNode.gain.value = v * this.startingAmp;
+  
+  updateSound(event) {
+    this.oscillator1.frequency.value = event.mappedFrequency();
+    this.oscillator2.frequency.value = event.mappedFrequency();
+    this.gainNode.gain.value = event.mappedAmp();
+    this.filter.frequency.value=   event.mappedFilter();
   }
 }

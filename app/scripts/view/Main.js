@@ -95,10 +95,12 @@ class Main {
       var timePassed = Date.now() - this.startTime;
       var speed = p.subtract(this.lastPoint);
       this.path.add(p);
-      this.sound.updateFrequency(p.x + 400);
+      var event = new CanvasTimelineEvent(timePassed, p, speed);
+      this.sound.updateSound(event);
+      // this.sound.updateFrequency(p.x + 400);
       // this.sound.updateVolume(p.y/1400);
-      this.sound.updateFilter(Math.min(Math.abs(speed.x) * 400, 2050));
-      this.timelineEvents.push(new CanvasTimelineEvent(timePassed, p, speed));
+      // this.sound.updateFilter(Math.min(Math.abs(speed.x) * 400, 2050));
+      this.timelineEvents.push(event);
       this.lastPoint = p;
     }
   }
