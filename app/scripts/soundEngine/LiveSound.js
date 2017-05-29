@@ -20,7 +20,7 @@ class LiveSound {
     this.filter = audioCtx.createBiquadFilter();
     this.filter.type = "lowshelf";
     this.filter.frequency.value = startingCutoff;
-    this.filter.gain.value = 20;
+    this.filter.gain.value = 30;
     this.gainNode.connect(this.filter);
     this.filter.connect(audioCtx.destination);
     this.playing = false;
@@ -59,7 +59,7 @@ class LiveSound {
       this.oscillator2.stop();
     }
   }
-  
+
   updateSound(event) {
     this.oscillator1.frequency.value = event.mappedFrequency();
     this.oscillator2.frequency.value = event.mappedFrequency();

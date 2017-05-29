@@ -16,7 +16,10 @@ class Main {
     this.timelineEvents = [];
     this.killList = [];
     this.sound = new LiveSound();
+    this.grid = [];
     normalizePoint = new Point(1/view.size.width,1/view.size.height);
+    this.gridOn = false;
+    this.gridAlpha = 0;
 
     //set events
     view.onMouseDown = (e)=>this.startDraw(e);
@@ -25,6 +28,22 @@ class Main {
     view.onFrame = (e)=>this.onFrame(e);
 
     //TODO - Add bar counter to set some kind of frame for all of this
+    this.drawGrid();
+  }
+
+  drawGrid() {
+    //create 10 sections
+    var p;
+    var widthSection = view.size.width/10;
+    for (var i = 1; i < 10; i++) {
+      p = new Path({
+        segments: [new Point(widthSection*i,0),new Point(widthSection*i,view.size.height)],
+        strokeColor: '#222222',
+      });
+      p.strokeColor.alpha = 0;
+      this.grid.push(p);
+
+    }
   }
 
   /**
@@ -46,6 +65,22 @@ class Main {
         }
       }
     }
+
+
+    if (this.gridOn && this.gridAlpha < 1) {
+      this.gridAlpha += 0.1;
+      for (var i = 0; i < this.grid.length; i++) {
+        var line = this.grid[i];
+        line.strokeColor.alpha = this.gridAlpha;
+      }
+    }
+    else if (!this.gridOn && this.gridAlpha > 0) {
+      this.gridAlpha -= 0.1;
+      for (var i = 0; i < this.grid.length; i++) {
+        var line = this.grid[i];
+        line.strokeColor.alpha = this.gridAlpha;
+      }
+    }
   }
 
   /**
@@ -55,7 +90,7 @@ class Main {
   startDraw(event) {
     console.log('Start draw ');
     if (this.isDrawing) return;
-
+    this.gridOn = true;
     this.sound.play();
     this.timelineEvents = [];
     this.startTime = Date.now();
@@ -67,7 +102,9 @@ class Main {
       // Select the path, so we can see its segment points:
       // fullySelected: true
     });
-    this.timelineEvents.push(new CanvasTimelineEvent(0, event.point, 0));
+    var event = new CanvasTimelineEvent(0, event.point, 0);
+    this.sound.updateSound(event);
+    this.timelineEvents.push(event);
   }
 
   /**
@@ -80,9 +117,12 @@ class Main {
     this.sound.stop();
     console.log("Stop Draw");
     this.isDrawing = false;
-    var pt = new PathTracer(this.timelineEvents,Date.now() - this.startTime);
-    this.path.simplify(10);
+    var totalDuration = Date.now() - this.startTime;
+    this.gridOn = false;
     this.killList.push(this.path);
+    if (totalDuration< 500) return;
+    var pt = new PathTracer(this.timelineEvents,totalDuration);
+    this.path.simplify(10);
   }
 
   /**
@@ -90,6 +130,8 @@ class Main {
    * @param event
    */
   draw(event) {
+
+
     if (this.isDrawing) {
       var p = event.point;
       var timePassed = Date.now() - this.startTime;
