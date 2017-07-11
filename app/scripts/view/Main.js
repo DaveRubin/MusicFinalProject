@@ -17,9 +17,9 @@ class Main {
     this.killList = [];
     this.sound = new LiveSound();
     this.grid = [];
-    normalizePoint = new Point(1/view.size.width,1/view.size.height);
     this.gridOn = false;
     this.gridAlpha = 0;
+    normalizePoint = new Point(1/view.size.width,1/view.size.height);
 
     //set events
     view.onMouseDown = (e)=>this.startDraw(e);
@@ -28,7 +28,13 @@ class Main {
     view.onFrame = (e)=>this.onFrame(e);
 
     //TODO - Add bar counter to set some kind of frame for all of this
+    this.bar = new TempoBar();
+    this.bar.OnStartEvent = this.OnBarStart;
     this.drawGrid();
+  }
+
+  OnBarStart() {
+    console.log("Start");
   }
 
   drawGrid() {
@@ -53,6 +59,8 @@ class Main {
   onFrame(event) {
     if (this.killList.length > 0) {
       var i = this.killList.length;
+
+      //path fade functionality
       while (i--) {
         var path = this.killList[i];
         if (path.strokeColor.alpha > 0) {
@@ -66,7 +74,7 @@ class Main {
       }
     }
 
-
+    //grid fade functionality
     if (this.gridOn && this.gridAlpha < 1) {
       this.gridAlpha += 0.1;
       for (var i = 0; i < this.grid.length; i++) {
