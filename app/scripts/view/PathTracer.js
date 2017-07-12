@@ -1,9 +1,11 @@
 class PathTracer {
 
-  constructor(timelineEvents,totalduration) {
-    this.intervals = [];
+  constructor(timelineEvents,totalduration,millisecondsBeforeStart) {
+    this.millisecondsBeforeStart = millisecondsBeforeStart;
     this.timeline = timelineEvents;
     this.totalduration = totalduration;
+    this.intervals = [];
+    this.isPlaying = false;
     console.log("Path tracer created");
 
     this.circle = new Path.Circle({
@@ -14,29 +16,29 @@ class PathTracer {
     });
 
     this.sound = new ShapeSound(this.timeline,this.totalduration);
-
-
-    this.repeatMotion();
-
-
-    // var path = new Shape.Circle(new Point(100,100), 5 );
-    // path.data.vector = new Point({
-    //   angle: Math.random() * 360,
-    //   length : scale * Math.random() / 5
-    // });
   }
 
   handleTimelineEvent(event) {
       this.circle.position = event.position;
   };
 
-  repeatMotion() {
+  Play() {
+    this.isPlaying = true;
+    setTimeout(this.StartSound.bind(this),this.millisecondsBeforeStart)
+  }
+
+  StartSound() {
     this.sound.play();
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
       var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);
       this.intervals.push(p);
     }
-    setTimeout(this.repeatMotion.bind(this), this.totalduration);
+
+    setTimeout(this.Stop.bind(this), this.totalduration);
+  }
+
+  Stop() {
+    this.isPlaying = false;
   }
 }

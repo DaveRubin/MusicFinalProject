@@ -12,13 +12,16 @@ class Main {
 
     //set vars
     this.isDrawing = false;
+    this.lastTickTime = null;
+    this.millisecondsBeforeStart = null;
     this.path = null;
-    this.timelineEvents = [];
-    this.killList = [];
-    this.sound = new LiveSound();
-    this.grid = [];
     this.gridOn = false;
     this.gridAlpha = 0;
+    this.timelineEvents = [];
+    this.killList = [];
+    this.grid = [];
+    this.paths = [];
+    this.sound = new LiveSound();
     normalizePoint = new Point(1/view.size.width,1/view.size.height);
 
     //set events
@@ -29,12 +32,17 @@ class Main {
 
     //TODO - Add bar counter to set some kind of frame for all of this
     this.bar = new TempoBar();
-    this.bar.OnStartEvent = this.OnBarStart;
+    this.bar.OnStartEvent = this.OnBarStart.bind(this);
     this.drawGrid();
   }
 
   OnBarStart() {
-    console.log("Start");
+    console.log("Tick");
+    this.lastTickTime = new Date();
+    for (var i = 0; i < this.paths.length; i++) {
+      var path = this.paths[i];
+      if (!path.isPlaying) path.Play();
+    }
   }
 
   drawGrid() {
@@ -44,11 +52,10 @@ class Main {
     for (var i = 1; i < 10; i++) {
       p = new Path({
         segments: [new Point(widthSection*i,0),new Point(widthSection*i,view.size.height)],
-        strokeColor: '#222222',
+        strokeColor: '#222222'
       });
       p.strokeColor.alpha = 0;
       this.grid.push(p);
-
     }
   }
 
@@ -98,6 +105,8 @@ class Main {
   startDraw(event) {
     console.log('Start draw ');
     if (this.isDrawing) return;
+    this.millisecondsBeforeStart = new Date() - this.lastTickTime ;
+    //console.log(this.millisecondsBeforeStart);
     this.gridOn = true;
     this.sound.play();
     this.timelineEvents = [];
@@ -110,6 +119,7 @@ class Main {
       // Select the path, so we can see its segment points:
       // fullySelected: true
     });
+
     var event = new CanvasTimelineEvent(0, event.point, 0);
     this.sound.updateSound(event);
     this.timelineEvents.push(event);
@@ -117,19 +127,18 @@ class Main {
 
   /**
    * When user stops from drawing shape,
-   * TODO - create the looper visual\sonic objects
    * Insert finished path to kill list
    * @param event
    */
   stopDraw(event) {
     this.sound.stop();
-    console.log("Stop Draw");
     this.isDrawing = false;
     var totalDuration = Date.now() - this.startTime;
     this.gridOn = false;
     this.killList.push(this.path);
     if (totalDuration< 500) return;
-    var pt = new PathTracer(this.timelineEvents,totalDuration);
+
+    this.paths.push(new PathTracer(this.timelineEvents,totalDuration,this.millisecondsBeforeStart));
     this.path.simplify(10);
   }
 
@@ -138,7 +147,6 @@ class Main {
    * @param event
    */
   draw(event) {
-
 
     if (this.isDrawing) {
       var p = event.point;

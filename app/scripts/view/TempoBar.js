@@ -28,7 +28,6 @@ class TempoBar {
 
     //create new items
     for (var i = 0; i < this.count; i++) {
-      console.log(i);
       var s = new BarSquare(10 + i * 110, 10, 100);
       this.barSquares.push(s);
     }
