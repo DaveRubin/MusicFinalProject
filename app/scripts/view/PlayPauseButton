@@ -13,13 +13,13 @@ class PlayPauseButton {
     });
     this.shape.fillColor = this.value? this.playingColor:this.stopColor;
 
-    this.shape.onMouseDown = (e)=>this.toggle(e);
+    this.shape.onClick = (e)=>this.toggle(e);
   }
 
   toggle(e) {
     e.preventDefault();
     this.value = !this.value;
     this.shape.fillColor = this.value? this.playingColor:this.stopColor;
-    if (this.onValueChange) this.onValueChange(this.value);
+    if (this.onValueChange) this.onValueChange();
   }
 }

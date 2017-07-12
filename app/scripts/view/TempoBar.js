@@ -47,9 +47,12 @@ class TempoBar {
 
     //create play pause button
     this.playPauseButton = new PlayPauseButton(10 + this.count * 110,10,100);
-    // this.playPauseButton.onValueChange = function(newVal) {
-    //   console.log("zzz" +newVal);
-    // }.bind(this);
+    this.playPauseButton.onValueChange = this.togglePlay.bind(this);
+  }
+
+  togglePlay() {
+      if (this.playPauseButton.value) this.Start();
+      else this.Stop();
   }
 
   OnClick() {

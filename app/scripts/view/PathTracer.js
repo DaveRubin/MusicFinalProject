@@ -30,6 +30,7 @@ class PathTracer {
   };
 
   Play() {
+    console.log("playing");
     this.isPlaying = true;
     setTimeout(this.StartSound.bind(this),this.millisecondsBeforeStart)
   }
