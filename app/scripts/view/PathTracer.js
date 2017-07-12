@@ -16,6 +16,13 @@ class PathTracer {
     });
 
     this.sound = new ShapeSound(this.timeline,this.totalduration);
+    this.circle.onFrame = (e)=>this.onFrame(e);
+  }
+
+  onFrame() {
+    if (!this.isPlaying && this.circle.fillColor.alpha > 0 ) {
+      this.circle.fillColor.alpha -= 0.05;
+    }
   }
 
   handleTimelineEvent(event) {
@@ -29,6 +36,7 @@ class PathTracer {
 
   StartSound() {
     this.sound.play();
+    this.circle.fillColor.alpha = 1;
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
       var p = setTimeout(this.handleTimelineEvent.bind(this, obj), obj.duration);

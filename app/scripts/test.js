@@ -5,7 +5,26 @@
 //   {time: 1000, message: {amp:1,freq:800}},
 //   {time: 1500, message: {amp:0.8,freq:100}}], 2000);
 
-var audioCtx = new AudioContext();
-window.onload = function() {
-    var a = new Main();
+var bufferLoader;
+var bufferList;
+var audioCtx;
+window.onload = init;
+function init(){
+    audioCtx = new AudioContext();
+    bufferLoader = new BufferLoader(
+      audioCtx,
+      [
+        '../sounds/tick.mp3'
+      ],
+      finishedLoadingSounds
+    );
+
+    bufferLoader.load();
 };
+
+
+function finishedLoadingSounds(LoadedBufferList) {
+  bufferList = LoadedBufferList;
+  console.log(bufferList);
+  var entryPoint = new Main();
+}

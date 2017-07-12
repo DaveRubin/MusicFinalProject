@@ -30,14 +30,12 @@ class Main {
     view.onMouseMove = (e)=>this.draw(e);
     view.onFrame = (e)=>this.onFrame(e);
 
-    //TODO - Add bar counter to set some kind of frame for all of this
+    this.drawGrid();
     this.bar = new TempoBar();
     this.bar.OnStartEvent = this.OnBarStart.bind(this);
-    this.drawGrid();
   }
 
   OnBarStart() {
-    console.log("Tick");
     this.lastTickTime = new Date();
     for (var i = 0; i < this.paths.length; i++) {
       var path = this.paths[i];
@@ -74,7 +72,6 @@ class Main {
           path.strokeColor.alpha -= 0.05;
         }
         else {
-          console.log("removeing from list");
           this.killList.splice(i, 1);
           path.remove();
         }
@@ -103,10 +100,8 @@ class Main {
    * @param event
    */
   startDraw(event) {
-    console.log('Start draw ');
     if (this.isDrawing) return;
     this.millisecondsBeforeStart = new Date() - this.lastTickTime ;
-    //console.log(this.millisecondsBeforeStart);
     this.gridOn = true;
     this.sound.play();
     this.timelineEvents = [];
