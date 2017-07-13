@@ -5,6 +5,8 @@ class TempoBar {
 
   constructor() {
     this.OnStartEvent = null;
+    this.OnStopEvent = null;
+    this.OnResetEvent = null;
 
     this.barSquares = [];
     this.playPauseButton = null;
@@ -14,22 +16,20 @@ class TempoBar {
     this.playing = false;
 
     this.updateBar();
-    this.updatePlayStopButton();
+    this.createButtons();
     //this.Start();
   }
 
   Start() {
     this.interval = setTimeout(this.OnClick.bind(this), 500);
     this.playing = true;
-
-    this.updatePlayStopButton();
   }
 
   Stop() {
     clearInterval(this.interval);
     this.playing = false;
-
-    this.updatePlayStopButton();
+    this.current = 0;
+    if (this.OnStopEvent) this.OnStopEvent();
   }
 
   updateBar() {
@@ -44,15 +44,15 @@ class TempoBar {
       var s = new BarSquare(10 + i * 110, 10, 100);
       this.barSquares.push(s);
     }
-
-    //create play pause button
-    this.playPauseButton = new PlayPauseButton(10 + this.count * 110,10,100);
-    this.playPauseButton.onValueChange = this.togglePlay.bind(this);
   }
 
   togglePlay() {
-      if (this.playPauseButton.value) this.Start();
-      else this.Stop();
+      if (this.playPauseButton.value) {
+        this.Start();
+      }
+      else {
+        this.Stop();
+      }
   }
 
   OnClick() {
@@ -62,13 +62,22 @@ class TempoBar {
     source1.connect(audioCtx.destination);
     source1.playbackRate.value = this.current == 0? 1.5:1;
     source1.start(0);
-    console.log("AAA");
     this.barSquares[this.current].Pulse();
     this.current = (this.current + 1) % this.count;
     this.interval = setTimeout(this.OnClick.bind(this), 500); // using set timeout instead of interval to allow usage of real time tempo change
   }
 
-  updatePlayStopButton() {
+  createButtons() {
+    this.playPauseButton = new PlayPauseButton(10 + this.count * 110,10,100);
+    this.playPauseButton.onValueChange = this.togglePlay.bind(this);
 
+    this.resetButton = new PlayPauseButton(10 + (this.count+1) * 110,10,100,'grey','grey');
+    this.resetButton.onValueChange = this.OnReset.bind(this);
+  }
+
+  OnReset() {
+    this.Stop();
+    this.playPauseButton.Set(false);
+    if (this.OnResetEvent != null) this.OnResetEvent();
   }
 }

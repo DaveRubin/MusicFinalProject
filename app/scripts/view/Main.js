@@ -33,6 +33,23 @@ class Main {
     this.drawGrid();
     this.bar = new TempoBar();
     this.bar.OnStartEvent = this.OnBarStart.bind(this);
+    this.bar.OnStopEvent = this.OnBarStop.bind(this);
+    this.bar.OnResetEvent = this.OnReset.bind(this);
+  }
+
+  OnReset() {
+    for (var i = 0; i < this.paths.length; i++) {
+      var path = this.paths[i];
+      path.Kill();
+    }
+    this.paths = [];
+  }
+
+  OnBarStop() {
+    for (var i = 0; i < this.paths.length; i++) {
+      var path = this.paths[i];
+      path.Stop();
+    }
   }
 
   OnBarStart() {

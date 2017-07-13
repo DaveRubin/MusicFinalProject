@@ -44,10 +44,21 @@ class PathTracer {
       this.intervals.push(p);
     }
 
-    setTimeout(this.Stop.bind(this), this.totalduration);
+    this.intervals.push(setTimeout(this.Stop.bind(this), this.totalduration));
   }
 
   Stop() {
+    console.log("Stoppppppp");
     this.isPlaying = false;
+    this.sound.stopPlaying();
+    for (var i = 0; i < this.intervals.length; i++) {
+      var interval = this.intervals[i];
+      clearTimeout(interval);
+    }
+  }
+
+  Kill() {
+    this.sound.Kill();
+    this.circle.remove();
   }
 }

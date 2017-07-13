@@ -1,8 +1,8 @@
 class PlayPauseButton {
 
-  constructor(x, y, size) {
-    this.playingColor = 'green';
-    this.stopColor = 'red';
+  constructor(x, y, size,playColor = 'green',stopColor = 'red') {
+    this.playingColor = playColor;
+    this.stopColor = stopColor;
     this.onValueChange = null;
     this.value = false;
 
@@ -13,12 +13,18 @@ class PlayPauseButton {
     });
     this.shape.fillColor = this.value? this.playingColor:this.stopColor;
 
-    this.shape.onClick = (e)=>this.toggle(e);
+    this.shape.onClick = (e)=>this.Toggle(e);
   }
 
-  toggle(e) {
+  Toggle(e) {
     e.preventDefault();
-    this.value = !this.value;
+    this.Set(!this.value);
+  }
+
+  Set(val) {
+    if (this.value == val) return;
+
+    this.value = val;
     this.shape.fillColor = this.value? this.playingColor:this.stopColor;
     if (this.onValueChange) this.onValueChange();
   }

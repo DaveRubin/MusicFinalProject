@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35c38386-3a29-4754-bd34-3acea38cba15" name="Default" comment="">
+    <list default="true" id="35c38386-3a29-4754-bd34-3acea38cba15" name="Default" comment="Fixed play\stop events">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/scripts/soundEngine/TimelineEvent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/SoundEngine/ShapeSound.js" afterPath="$PROJECT_DIR$/app/scripts/SoundEngine/ShapeSound.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/Main.js" afterPath="$PROJECT_DIR$/app/scripts/view/Main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/PathTracer.js" afterPath="$PROJECT_DIR$/app/scripts/view/PathTracer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/PlayPauseButton" afterPath="$PROJECT_DIR$/app/scripts/view/PlayPauseButton" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/TempoBar.js" afterPath="$PROJECT_DIR$/app/scripts/view/TempoBar.js" />
@@ -59,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="27" column="20" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="20" />
+            <state relative-caret-position="195">
+              <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -72,18 +75,18 @@
       <file leaf-file-name="PathTracer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/PathTracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="255">
+              <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TempoBar.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TempoBar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+            <state relative-caret-position="376">
+              <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -92,8 +95,8 @@
       <file leaf-file-name="PlayPauseButton" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/PlayPauseButton">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+            <state relative-caret-position="360">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -112,18 +115,8 @@
       <file leaf-file-name="ShapeSound.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CanvasTimelineEvent.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="33" column="56" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+            <state relative-caret-position="138">
+              <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -158,17 +151,17 @@
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/app/scripts/soundEngine/TimelineEvent.js" />
-        <option value="$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js" />
         <option value="$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/BarSquare.js" />
         <option value="$PROJECT_DIR$/app/scripts/soundEngine/BufferLoader.js" />
         <option value="$PROJECT_DIR$/app/scripts/test.js" />
-        <option value="$PROJECT_DIR$/app/scripts/view/Main.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/view/PathTracer.js" />
-        <option value="$PROJECT_DIR$/app/scripts/view/PlayPauseButton" />
+        <option value="$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/TempoBar.js" />
+        <option value="$PROJECT_DIR$/app/scripts/view/PlayPauseButton" />
+        <option value="$PROJECT_DIR$/app/scripts/view/Main.js" />
       </list>
     </option>
   </component>
@@ -808,7 +801,7 @@
       <workItem from="1496534513783" duration="435000" />
       <workItem from="1496748617754" duration="598000" />
       <workItem from="1497088626964" duration="669000" />
-      <workItem from="1499745395363" duration="9023000" />
+      <workItem from="1499745395363" duration="11375000" />
     </task>
     <task id="LOCAL-00001" summary="Added base object for sound player">
       <created>1495565925746</created>
@@ -922,11 +915,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499874980597</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed play\stop events">
+      <created>1499875319058</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1499875319058</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37583000" />
+    <option name="totallyTimeSpent" value="39935000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -986,7 +986,8 @@
     <MESSAGE value="Consider time passed between start of bar to when sound is playing" />
     <MESSAGE value="Added toggle button" />
     <MESSAGE value="Added toggle button + tick sounds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added toggle button + tick sounds" />
+    <MESSAGE value="Fixed play\stop events" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed play\stop events" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1230,14 +1231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/paper/paper-full.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2114">
@@ -1274,14 +1267,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist2911/scripts/scripts.3f970f88.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-316">
-          <caret line="16659" column="17" selection-start-line="16659" selection-start-column="9" selection-end-line="16659" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1308,14 +1293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1324,26 +1301,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/view/PathTracer.js">
+    <entry file="file://$PROJECT_DIR$/dist2911/scripts/scripts.3f970f88.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="-2564">
+          <caret line="16563" column="6" selection-start-line="16563" selection-start-column="6" selection-end-line="16563" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/view/PlayPauseButton">
+    <entry file="file://$PROJECT_DIR$/dist/scripts/scripts.3f970f88.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        <state relative-caret-position="165">
+          <caret line="16563" column="6" selection-start-line="16563" selection-start-column="6" selection-end-line="16563" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/view/PathTracer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+        <state relative-caret-position="376">
+          <caret line="79" column="28" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/view/PlayPauseButton">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
           <folding />
         </state>
       </provider>

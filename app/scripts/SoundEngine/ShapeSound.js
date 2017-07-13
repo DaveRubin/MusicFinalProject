@@ -28,6 +28,11 @@ class ShapeSound {
     this.intervals = [];
   }
 
+  Kill() {
+    this.gainNode.disconnect();
+    this.filter.disconnect();
+  }
+
   /**
    * Start playing the given timeline
    */
