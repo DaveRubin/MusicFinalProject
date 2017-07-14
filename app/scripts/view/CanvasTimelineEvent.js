@@ -7,6 +7,9 @@ class CanvasTimelineEvent {
     this.position = position;
     this.speed = speed;
     this.notes = [440,493.9,523.3,587.3,659.3,698.5,784.0,880.0,987.8,1047];
+    for (var i = 0; i < this.notes.length; i++) {
+      this.notes[i] = this.notes[i]/659.3;
+    }
   }
 
   mappedFrequency() {

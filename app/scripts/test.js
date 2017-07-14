@@ -14,7 +14,8 @@ function init(){
     bufferLoader = new BufferLoader(
       audioCtx,
       [
-        '../sounds/tick.mp3'
+        '../sounds/tick.mp3',
+        '../sounds/Synth.mp3'
       ],
       finishedLoadingSounds
     );

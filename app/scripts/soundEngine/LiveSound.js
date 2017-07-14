@@ -34,17 +34,15 @@ class LiveSound {
     //make sure instance isn't playing already
     this.stop();
     //create new oscilator
-    this.oscillator1 = audioCtx.createOscillator();
-    this.oscillator1.type = 'sawtooth'; // sine wave — other values are 'square', 'sawtooth', 'triangle' and 'custom'
-    this.oscillator1.connect(this.gainNode);
-    this.oscillator2 = audioCtx.createOscillator();
-    this.oscillator2.type = 'triangle'; // sine wave — other values are 'square', 'sawtooth', 'triangle' and 'custom'
-    this.oscillator2.connect(this.gainNode);
-    this.oscillator1.detune.value = -10;
-    this.oscillator2.detune.value = 10;
+    this.oscillator1 = audioCtx.createBufferSource();
+    this.oscillator1.buffer = bufferList[1];
+    this.oscillator1.playbackRate.value = 1;
+    this.oscillator1.loop = true;
+    this.oscillator1.loopStart = 1;
+    this.oscillator1.loopEnd = 2;
+    this.oscillator1.connect(audioCtx.destination);
 
     this.oscillator1.start();
-    this.oscillator2.start();
     this.isPlaying = true;
   }
 
@@ -56,13 +54,11 @@ class LiveSound {
     if (this.isPlaying) {
       this.isPlaying = false;
       this.oscillator1.stop();
-      this.oscillator2.stop();
     }
   }
 
   updateSound(event) {
-    this.oscillator1.frequency.value = event.mappedFrequency();
-    this.oscillator2.frequency.value = event.mappedFrequency();
+    this.oscillator1.playbackRate.value = event.mappedFrequency();
     this.gainNode.gain.value = event.mappedAmp();
     this.filter.frequency.value=   event.mappedFilter();
   }
