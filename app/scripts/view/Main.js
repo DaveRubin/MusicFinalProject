@@ -1,6 +1,8 @@
 /**
  * Created by david on 24/05/2017.
  * The main class, app root
+ *
+ * //TODO - create tempo tool
  */
 var normalizePoint;
 class Main {
@@ -22,6 +24,7 @@ class Main {
     this.grid = [];
     this.paths = [];
     this.sound = new LiveSound();
+    this.selectedInstrument = "Synth1";
     normalizePoint = new Point(1/view.size.width,1/view.size.height);
 
     //set events
@@ -35,6 +38,15 @@ class Main {
     this.bar.OnStartEvent = this.OnBarStart.bind(this);
     this.bar.OnStopEvent = this.OnBarStop.bind(this);
     this.bar.OnResetEvent = this.OnReset.bind(this);
+
+    this.RegisterInstruments();
+  }
+
+  RegisterInstruments() {
+    $("input[name=selector][value=" + this.selectedInstrument + "]").prop('checked', true);
+    $("input[name=selector]").change(function () {
+      this.selectedInstrument = $('input[name=selector]:checked').val();
+    }.bind(this));
   }
 
   OnReset() {

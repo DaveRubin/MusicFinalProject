@@ -15,6 +15,7 @@
     <!-- endbuild -->
 
   </head>
+
   <body>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -27,11 +28,20 @@
       <div class="canvas">
         <canvas resize="true"  id="myCanvas" resize="true" ></canvas>
       </div>
+      <div id="controls">
+        <div class="radio-group">
+          <input type="radio" id="option-synth1" value="Synth1" name="selector"><label for="option-synth1">Synth1</label>
+          <input type="radio" id="option-synth2" value="Synth2" name="selector"><label for="option-synth2">Synth2</label>
+          <input type="radio" id="option-rythem" value="Rythem" name="selector"><label for="option-rythem">Rythem</label>
+        </div>
+      </div>
     </div>
 
 
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+    <script src="scripts/jquery/dist/jquery.min.js"></script>
     <script src="scripts/paper/paper-full.js"></script>
     <script src="scripts/soundEngine/BufferLoader.js"></script>
     <script src="scripts/soundEngine/LiveSound.js"></script>

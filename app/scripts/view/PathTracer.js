@@ -31,11 +31,11 @@ class PathTracer {
 
   Play() {
     console.log("playing");
-    this.isPlaying = true;
     setTimeout(this.StartSound.bind(this),this.millisecondsBeforeStart)
   }
 
   StartSound() {
+    this.isPlaying = true;
     this.sound.play();
     this.circle.fillColor.alpha = 1;
     for (var i = 0; i < this.timeline.length; i++) {
@@ -48,7 +48,6 @@ class PathTracer {
   }
 
   Stop() {
-    console.log("Stoppppppp");
     this.isPlaying = false;
     this.sound.stopPlaying();
     for (var i = 0; i < this.intervals.length; i++) {

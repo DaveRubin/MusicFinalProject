@@ -1,3 +1,12 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$controls-width : 330px;
+$controls-height: 75px;
+
+$bg: #332f35;
+$fg: lighten($bg,20%);
+$borderWidth: 3px;
+
 body {
   height: 100%;
   margin: 0;
@@ -14,4 +23,46 @@ canvas[resize] {
   }
 }
 
+#controls {
+
+  position: absolute;
+  top: calc(100% - 100px);
+  left: calc(50% - 165px);
+  width: $controls-width;
+  height: $controls-height;
+  //background: white;
+  border-radius: 5px;
+
+  input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+  }
+
+  label {
+    color: lighten($bg,40%);
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+    background: white;
+  }
+
+  input[type=radio]:checked + label{
+    color: lighten($bg,60%);
+    background: black;
+  }
+
+  label + input[type=radio] + label {
+    //border-left: solid $borderWidth $fg;
+    background: white;
+  }
+  .radio-group {
+    border: solid $borderWidth $fg;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
 
