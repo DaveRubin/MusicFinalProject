@@ -9,15 +9,15 @@ class TempoBar {
     this.OnResetEvent = null;
 
     this.barSquares = [];
-    this.playPauseButton = null;
     this.interval = null;
     this.count = 4;
     this.current = 0;
     this.playing = false;
 
     this.updateBar();
-    this.createButtons();
-    //this.Start();
+
+    $(PlayButton).click($.proxy(  this.togglePlay, this));
+    $(ResetButton).click($.proxy(  this.OnReset, this));
   }
 
   Start() {
@@ -33,26 +33,27 @@ class TempoBar {
   }
 
   updateBar() {
-    //clear all existing items
-    for (var i = 0; i < this.barSquares.length; i++) {
-      var square = this.barSquares[i];
-      square.Kill();
-    }
-
-    //create new items
-    for (var i = 0; i < this.count; i++) {
-      var s = new BarSquare(10 + i * 110, 10, 100);
-      this.barSquares.push(s);
+    this.barSquares = [];
+    var a = $( ".item" );
+    for (var i = 0; i < a.length; i++) {
+      var obj = a[i];
+      $(obj).fadeTo(0,0);
+      this.barSquares.push($(obj));
     }
   }
 
   togglePlay() {
-      if (this.playPauseButton.value) {
+      if (!this.playing) {
         this.Start();
       }
       else {
         this.Stop();
       }
+    this.UpdateButton();
+  }
+
+  UpdateButton() {
+    $(PlayButton).html( this.playing? "Stop":"Play");
   }
 
   OnClick() {
@@ -62,22 +63,18 @@ class TempoBar {
     source1.connect(audioCtx.destination);
     source1.playbackRate.value = this.current == 0? 1.5:1;
     source1.start(0);
-    this.barSquares[this.current].Pulse();
+    //animate this bar
+    var item=  this.barSquares[this.current];
+    item.fadeTo(1,1,function() {
+      item.fadeTo(1000,0);
+    });
     this.current = (this.current + 1) % this.count;
     this.interval = setTimeout(this.OnClick.bind(this), 500); // using set timeout instead of interval to allow usage of real time tempo change
   }
 
-  createButtons() {
-    this.playPauseButton = new PlayPauseButton(10 + this.count * 110,10,100);
-    this.playPauseButton.onValueChange = this.togglePlay.bind(this);
-
-    this.resetButton = new PlayPauseButton(10 + (this.count+1) * 110,10,100,'grey','grey');
-    this.resetButton.onValueChange = this.OnReset.bind(this);
-  }
-
   OnReset() {
     this.Stop();
-    this.playPauseButton.Set(false);
+    this.UpdateButton();
     if (this.OnResetEvent != null) this.OnResetEvent();
   }
 }
