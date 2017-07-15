@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35c38386-3a29-4754-bd34-3acea38cba15" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/sounds/Synth.mp3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/sounds/light.wav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js" afterPath="$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/test.js" afterPath="$PROJECT_DIR$/app/scripts/test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js" afterPath="$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/Main.js" afterPath="$PROJECT_DIR$/app/scripts/view/Main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/view/PathTracer.js" afterPath="$PROJECT_DIR$/app/scripts/view/PathTracer.js" />
     </list>
     <ignored path="Project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,20 +33,8 @@
         <entry file="file://$PROJECT_DIR$/app/scripts/test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BufferLoader.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/BufferLoader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
-              <folding>
-                <element signature="n#!!doc;n#BufferLoader#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +42,8 @@
       <file leaf-file-name="Main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="286">
+              <caret line="164" column="121" selection-start-line="164" selection-start-column="121" selection-end-line="164" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -64,8 +52,8 @@
       <file leaf-file-name="PathTracer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/view/PathTracer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            <state relative-caret-position="297">
+              <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -74,8 +62,8 @@
       <file leaf-file-name="ShapeSound.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1380">
-              <caret line="92" column="66" selection-start-line="92" selection-start-column="66" selection-end-line="92" selection-end-column="66" />
+            <state relative-caret-position="255">
+              <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -84,8 +72,18 @@
       <file leaf-file-name="LiveSound.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="60" selection-end-column="66" />
+            <state relative-caret-position="228">
+              <caret line="69" column="40" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TempoBar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="63" column="21" selection-start-line="58" selection-start-column="76" selection-end-line="63" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -104,18 +102,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
+            <state relative-caret-position="70">
               <caret line="32" column="62" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TempoBar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="63" column="21" selection-start-line="58" selection-start-column="76" selection-end-line="63" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -163,15 +151,16 @@
         <option value="$PROJECT_DIR$/app/scripts/soundEngine/BufferLoader.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/TempoBar.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/PlayPauseButton" />
-        <option value="$PROJECT_DIR$/app/scripts/view/PathTracer.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/ControlPanel" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/ControlPanel.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/styles/main.scss" />
-        <option value="$PROJECT_DIR$/app/scripts/view/Main.js" />
-        <option value="$PROJECT_DIR$/app/scripts/test.js" />
-        <option value="$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js" />
         <option value="$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js" />
+        <option value="$PROJECT_DIR$/app/scripts/test.js" />
+        <option value="$PROJECT_DIR$/app/scripts/view/Main.js" />
+        <option value="$PROJECT_DIR$/dist2911/scripts/scripts.3f970f88.js" />
+        <option value="$PROJECT_DIR$/app/scripts/view/PathTracer.js" />
+        <option value="$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js" />
         <option value="$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js" />
       </list>
     </option>
@@ -349,6 +338,8 @@
     <property name="editor.config.accepted" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="live&#9;FILE&#9;file:///Users/david/School/Music/Project/app/scripts/soundEngine/LiveSound.js" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -795,7 +786,7 @@
       <workItem from="1496534513783" duration="435000" />
       <workItem from="1496748617754" duration="598000" />
       <workItem from="1497088626964" duration="669000" />
-      <workItem from="1499745395363" duration="17224000" />
+      <workItem from="1499745395363" duration="20513000" />
     </task>
     <task id="LOCAL-00001" summary="Added base object for sound player">
       <created>1495565925746</created>
@@ -930,14 +921,21 @@
       <option name="project" value="LOCAL" />
       <updated>1500019953105</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added synth tone mapping">
+      <created>1500030142402</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1500030142402</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45784000" />
+    <option name="totallyTimeSpent" value="49073000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -997,7 +995,8 @@
     <MESSAGE value="Fixed play\stop events" />
     <MESSAGE value="Added reset Button" />
     <MESSAGE value="Added radio select for instruments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added radio select for instruments" />
+    <MESSAGE value="Added synth tone mapping" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added synth tone mapping" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1284,26 +1283,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="63" column="21" selection-start-line="58" selection-start-column="76" selection-end-line="63" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/scripts/scripts.3f970f88.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="16563" column="6" selection-start-line="16563" selection-start-column="6" selection-end-line="16563" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1316,40 +1299,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="32" column="62" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/BufferLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!doc;n#BufferLoader#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist2911/scripts/scripts.3f970f88.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16665" column="2" selection-start-line="16665" selection-start-column="2" selection-end-line="16665" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/view/CanvasTimelineEvent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1358,26 +1307,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/BufferLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#BufferLoader#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/view/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="164" column="121" selection-start-line="164" selection-start-column="121" selection-end-line="164" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist2911/scripts/scripts.3f970f88.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="16599" column="24" selection-start-line="16599" selection-start-column="24" selection-end-line="16599" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/view/PathTracer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        <state relative-caret-position="297">
+          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="32" column="62" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/view/TempoBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="63" column="21" selection-start-line="58" selection-start-column="76" selection-end-line="63" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/LiveSound.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="60" selection-end-column="66" />
+        <state relative-caret-position="228">
+          <caret line="69" column="40" selection-start-line="69" selection-start-column="3" selection-end-line="69" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/soundEngine/ShapeSound.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="92" column="66" selection-start-line="92" selection-start-column="66" selection-end-line="92" selection-end-column="66" />
+        <state relative-caret-position="255">
+          <caret line="83" column="24" selection-start-line="83" selection-start-column="24" selection-end-line="83" selection-end-column="24" />
           <folding />
         </state>
       </provider>

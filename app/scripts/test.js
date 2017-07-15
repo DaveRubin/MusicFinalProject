@@ -15,7 +15,8 @@ function init(){
       audioCtx,
       [
         '../sounds/tick.mp3',
-        '../sounds/Synth.mp3'
+        '../sounds/Synth.mp3',
+        '../sounds/Light.wav'
       ],
       finishedLoadingSounds
     );

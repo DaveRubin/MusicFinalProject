@@ -132,7 +132,7 @@ class Main {
     if (this.isDrawing) return;
     this.millisecondsBeforeStart = new Date() - this.lastTickTime ;
     this.gridOn = true;
-    this.sound.play();
+    this.sound.play(this.selectedInstrument);
     this.timelineEvents = [];
     this.startTime = Date.now();
     this.lastPoint = event.point;
@@ -162,7 +162,7 @@ class Main {
     this.killList.push(this.path);
     if (totalDuration< 500) return;
 
-    this.paths.push(new PathTracer(this.timelineEvents,totalDuration,this.millisecondsBeforeStart));
+    this.paths.push(new PathTracer(this.timelineEvents,totalDuration,this.millisecondsBeforeStart,this.selectedInstrument));
     this.path.simplify(10);
   }
 

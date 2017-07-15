@@ -1,6 +1,7 @@
 class PathTracer {
 
-  constructor(timelineEvents,totalduration,millisecondsBeforeStart) {
+  constructor(timelineEvents,totalduration,millisecondsBeforeStart,instrument) {
+    this.instrument = instrument;
     this.millisecondsBeforeStart = millisecondsBeforeStart;
     this.timeline = timelineEvents;
     this.totalduration = totalduration;
@@ -36,7 +37,7 @@ class PathTracer {
 
   StartSound() {
     this.isPlaying = true;
-    this.sound.play();
+    this.sound.play(this.instrument);
     this.circle.fillColor.alpha = 1;
     for (var i = 0; i < this.timeline.length; i++) {
       var obj = this.timeline[i];
