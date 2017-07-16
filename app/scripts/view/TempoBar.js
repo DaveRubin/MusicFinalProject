@@ -53,7 +53,7 @@ class TempoBar {
   }
 
   UpdateButton() {
-    $(PlayButton).html( this.playing? "Stop":"Play");
+    $(PlayButton).html( this.playing ? "Stop" : "Play" );
   }
 
   OnClick() {

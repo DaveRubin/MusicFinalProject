@@ -62,6 +62,7 @@ class ShapeSound {
       this.intervals.push(p);
     }
 
+
     var endingP = setTimeout(()=>this.stopPlaying(), this.totalDuration);
     this.intervals.push(endingP);
   }
@@ -81,7 +82,17 @@ class ShapeSound {
     for (var i = 0; i < this.intervals.length; i++) {
       clearInterval(this.intervals[i]);
     }
+    if (this.path) {
+      this.fadingPath = this.path;
+      this.fadingPath.onFrame = (e)=>this.fade(e);
+      this.path = null;
+    }
     this.intervals = [];
+  }
+
+  fade(e) {
+    this.fadingPath.strokeColor.alpha -=0.05;
+    if (this.fadingPath.strokeColor.alpha <= 0) this.fadingPath.clear();
   }
 
   /**
@@ -89,6 +100,15 @@ class ShapeSound {
    * @param event - CanvasTimelineEvent object
    */
   handleTimelineEvent(event) {
+    if (!this.path) {
+      this.path = new Path({
+        segments: [event.position],
+        strokeColor: 'white'
+      });
+    }
+    else {
+      this.path.add(event.position);
+    }
 
     if (!this.isPlaying) {
       this.isPlaying = true;
